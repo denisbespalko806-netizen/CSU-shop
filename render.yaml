@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: csu-shop
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: BOT_USERNAME
+        sync: false
+      - key: ADMIN_PIN
+        sync: false
+      - key: ADMIN_USERNAMES
+        value: denis_2611,Menager_Combo_Stunt_Ukraine
+      - key: WEBAPP_URL
+        sync: false
+      - key: DB_PATH
+        value: /var/data/csu_shop.db
+    disk:
+      name: csu-shop-data
+      mountPath: /var/data
+      sizeGB: 1
